@@ -1,0 +1,17 @@
+OFFICIAL=(
+nerd-fonts
+man
+neovim
+tailscale
+wl-clipboard
+stow
+tmux
+lazygit
+)
+AUR=(
+opencode-bin
+)
+SERVICE=(
+bluetooth
+tailscaled
+)
