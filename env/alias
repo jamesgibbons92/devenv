@@ -1,1 +1,20 @@
-alias oc=opencode
+alias vim=nvim
+alias pn=pnpm
+alias clear='printf "\033c"'
+alias ls="ls --color -G --group-directories-first"
+alias lg="lazygit"
+
+yeet() {
+    ps aux -W | grep $1 | awk '{print $2}' | xargs kill
+}
+
+# Tailscale
+alias tss="tailscale status"
+tsf() {
+  tailscale status | awk -v hostname="$1" '$2 == hostname {print $1}'
+}
+
+# opencode
+alias vibe=opencode
+alias hey="opencode run"
+alias ok="opencode run -c"
