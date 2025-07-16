@@ -1,0 +1,9 @@
+Issues with having to re-pair bluetooth device when booting into each OS, when using same dongle: 
+https://gist.github.com/jamesgibbons92/b22c2f3d90e203bdc39b57ce9994b116
+
+System Clock out of sync, on Windows you should set the timezone to UTC:
+C:\>reg add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation" /v RealTimeIsUniversal /d 1 /t REG_DWORD /f
+
+
+
+

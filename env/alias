@@ -3,6 +3,7 @@ alias pn=pnpm
 alias clear='printf "\033c"'
 alias ls="ls --color -G --group-directories-first"
 alias lg="lazygit"
+alias hist=history
 
 yeet() {
     ps aux -W | grep $1 | awk '{print $2}' | xargs kill
@@ -15,6 +16,7 @@ tsf() {
 }
 
 # opencode
-alias vibe=opencode
-alias hey="opencode run"
-alias ok="opencode run -c"
+alias vibe="opencode ."
+alias hey="opencode run --mode=plan"
+alias ok="opencode run -c --mode=plan"
+
