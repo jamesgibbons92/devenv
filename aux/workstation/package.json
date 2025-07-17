@@ -1,0 +1,12 @@
+{
+  "name": "workstation",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "deploy": "sst deploy",
+    "remove": "sst remove"
+  },
+  "dependencies": {
+    "sst": "^3"
+  }
+}

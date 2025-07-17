@@ -8,10 +8,12 @@ stow
 tmux
 lazygit
 go
+nvm
 qmk
 )
 AUR=(
 opencode-bin
+aws-cli-v2
 )
 SERVICE=(
 bluetooth

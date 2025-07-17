@@ -17,6 +17,7 @@ tsf() {
 
 # opencode
 alias vibe="opencode ."
-alias hey="opencode run --mode=plan"
-alias ok="opencode run -c --mode=plan"
+alias run="opencode run"
+alias ask="opencode run --mode=plan"
+alias followup="opencode run -c --mode=plan"
 
