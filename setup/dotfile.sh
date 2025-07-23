@@ -1,3 +1,3 @@
 #!/bin/bash
 
-stow -R -v -t ~ -d ~/.devenv/dot .
+stow --no-folding --adopt -v -t ~ -d ~/.devenv/dot .
