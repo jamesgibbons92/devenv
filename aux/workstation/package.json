@@ -6,8 +6,8 @@
     "deploy": "STAGE=james sst deploy",
     "remove": "STAGE=james sst remove",
     "diff": "STAGE=james sst diff",
-    "stop": "bash -c 'aws ec2 stop-instances --instance-ids `aws ec2 describe-instances --filters \"Name=tag:Name,Values=workstation\" --query \"Reservations[*].Instances[*].InstanceId\" --output text --no-cli-pager`'",
-    "start": "bash -c 'aws ec2 start-instances --instance-ids `aws ec2 describe-instances --filters \"Name=tag:Name,Values=workstation\" --query \"Reservations[*].Instances[*].InstanceId\" --output text --no-cli-pager`'"
+    "stop": "bash -c 'aws ec2 stop-instances --instance-ids `aws ec2 describe-instances --filters \"Name=tag:Name,Values=workstation\" --query \"Reservations[*].Instances[*].InstanceId\" --output text --no-cli-pager` --no-cli-pager'",
+    "start": "bash -c 'aws ec2 start-instances --instance-ids `aws ec2 describe-instances --filters \"Name=tag:Name,Values=workstation\" --query \"Reservations[*].Instances[*].InstanceId\" --output text --no-cli-pager` --no-cli-pager'"
   },
   "dependencies": {
     "sst": "^3"
