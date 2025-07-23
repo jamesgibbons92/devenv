@@ -119,3 +119,5 @@ if [[ -z "$TMUX" ]]; then
   tmux attach-session || tmux new-session
 fi
 
+mkdir -p ~/dev && cd ~/dev
+
