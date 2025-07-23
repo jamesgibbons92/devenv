@@ -1,8 +1,8 @@
 #!/bin/bash
 
+USER=$(whoami)
 HOSTNAME=$(hostnamectl hostname)
-KEY_NAME="${HOSTNAME}"
-SSH_KEY_PATH="$HOME/.ssh/id_ed25519_${KEY_NAME}"
+SSH_KEY_PATH="$HOME/.ssh/id_ed25519"
 
 # Check if SSH key already exists
 if [ -f "$SSH_KEY_PATH" ]; then
@@ -25,4 +25,3 @@ chmod 644 "${SSH_KEY_PATH}.pub"
 echo "SSH key generated successfully!"
 echo "Public key location: ${SSH_KEY_PATH}.pub"
 echo "Private key location: $SSH_KEY_PATH"
-

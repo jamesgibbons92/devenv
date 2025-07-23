@@ -26,5 +26,5 @@ else
   # Pane doesn't exist, create it
   tmux split-window -h -c "#{pane_current_path}"
   tmux select-pane -T "$PANE_NAME"
-  tmux send-keys "opencode" Enter
+  tmux send-keys "opencode ." Enter
 fi
