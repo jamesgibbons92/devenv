@@ -102,7 +102,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-for f in ~/devenv/env/*; do source $f; done
+for f in ~/.devenv/env/*; do source $f; done
 
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
@@ -114,3 +114,8 @@ bindkey "^[[B" down-line-or-beginning-search
 
 #nvm  
 . /usr/share/nvm/init-nvm.sh
+
+if [[ -z "$TMUX" ]]; then
+  tmux attach-session || tmux new-session
+fi
+

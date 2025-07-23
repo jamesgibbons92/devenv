@@ -1,3 +1,3 @@
 #!/bin/bash
 
-stow -R -v -t ~ -d ~/devenv/dot .
+stow -R -v -t ~ -d ~/.devenv/dot .
