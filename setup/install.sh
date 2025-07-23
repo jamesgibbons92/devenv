@@ -42,6 +42,25 @@ install_packages_from_file() {
   fi
 }
 
+has_desktop_environment() {
+  # Check for common desktop environment indicators
+  if [[ -n "$XDG_CURRENT_DESKTOP" ]] || [[ -n "$DESKTOP_SESSION" ]]; then
+    return 0
+  fi
+  
+  # Check if X11 or Wayland is running
+  if [[ -n "$DISPLAY" ]] || [[ -n "$WAYLAND_DISPLAY" ]]; then
+    return 0
+  fi
+  
+  # Check for common DE processes
+  if pgrep -x "gnome-session\|kde-session\|xfce4-session\|lxsession\|mate-session" >/dev/null 2>&1; then
+    return 0
+  fi
+  
+  return 1
+}
+
 main() {
   echo "Starting package installation..."
 
@@ -49,6 +68,11 @@ main() {
 
   for pkg_file in "$(dirname "$0")/../pkg"/*; do
     if [[ -f "$pkg_file" ]]; then
+      # Skip desktop packages if no desktop environment detected
+      if [[ "$(basename "$pkg_file")" == "desktop" ]] && ! has_desktop_environment; then
+        echo "No desktop environment detected, skipping desktop packages..."
+        continue
+      fi
       install_packages_from_file "$pkg_file"
     fi
   done
