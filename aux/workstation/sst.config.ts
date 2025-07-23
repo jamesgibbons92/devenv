@@ -4,7 +4,7 @@ const amis = {
   "eu-west-2": "ami-0d4beb9180011210c",
 };
 export default $config({
-  app(input) {
+  app(_) {
     return {
       name: "workstation",
       home: "aws",
