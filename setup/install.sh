@@ -47,22 +47,25 @@ has_desktop_environment() {
   if [[ -n "$XDG_CURRENT_DESKTOP" ]] || [[ -n "$DESKTOP_SESSION" ]]; then
     return 0
   fi
-  
+
   # Check if X11 or Wayland is running
   if [[ -n "$DISPLAY" ]] || [[ -n "$WAYLAND_DISPLAY" ]]; then
     return 0
   fi
-  
+
   # Check for common DE processes
   if pgrep -x "gnome-session\|kde-session\|xfce4-session\|lxsession\|mate-session" >/dev/null 2>&1; then
     return 0
   fi
-  
+
   return 1
 }
 
 main() {
   echo "Starting package installation..."
+
+  echo "Upgrading OS"
+  sudo pacman -Syu
 
   check_and_install_paru
 

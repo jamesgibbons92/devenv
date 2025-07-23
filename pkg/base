@@ -6,6 +6,7 @@ tailscale
 wl-clipboard
 stow
 tmux
+git
 lazygit
 go
 nvm
@@ -13,10 +14,13 @@ qmk
 zsh
 docker
 ufw
+aws-cli-v2
+htop
+syncthing
+flatpak
 )
 AUR=(
 opencode-bin
-aws-cli-v2
 )
 SERVICE=(
 bluetooth
