@@ -69,6 +69,7 @@ main() {
 
   check_and_install_paru
 
+  # Base packages
   for pkg_file in "$(dirname "$0")/../pkg"/*; do
     if [[ -f "$pkg_file" ]]; then
       # Skip desktop packages if no desktop environment detected
@@ -79,6 +80,13 @@ main() {
       install_packages_from_file "$pkg_file"
     fi
   done
+
+  # Install host-specific packages if available
+  HOST_PKGS="$(dirname "$0")/../pkg/host/$(hostnamectl hostname)"
+  if [[ -f "$HOST_PKGS" ]]; then
+    echo "Installing host-specific packages from $HOST_PKGS..."
+    install_packages_from_file "$HOST_PKGS"
+  fi
 
   echo "Package installation complete!"
 

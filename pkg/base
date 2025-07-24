@@ -19,6 +19,7 @@ aws-cli-v2
 htop
 syncthing
 flatpak
+obsidian
 )
 AUR=(
 opencode-bin
