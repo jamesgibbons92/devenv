@@ -12,6 +12,7 @@ go
 nvm
 qmk
 zsh
+docker-buildx
 docker
 ufw
 aws-cli-v2
@@ -21,6 +22,8 @@ flatpak
 )
 AUR=(
 opencode-bin
+aws-session-manager-plugin
+amazon-ecr-credential-helper
 )
 SERVICE=(
 bluetooth
