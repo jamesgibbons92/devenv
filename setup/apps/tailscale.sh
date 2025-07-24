@@ -29,8 +29,9 @@ echo
 
 echo "=== IMPORTANT: READ BEFORE PROCEEDING ==="
 echo "1. You MUST login to Tailscale first: sudo tailscale up"
-echo "2. Only after successful Tailscale login, enable UFW: sudo ufw enable"
+echo "2. Only after successful Tailscale login, enable UFW: sudo ufw enable && sudo systemctl enable ufw"
 echo "3. Failure to login to Tailscale before enabling UFW will lock you out!"
 echo "4. Make sure you can access this machine through Tailscale before enabling UFW"
 echo
 echo "Tailscale setup complete - UFW configured but NOT enabled yet."
+
