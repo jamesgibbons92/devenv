@@ -14,6 +14,7 @@ qmk
 zsh
 docker-buildx
 docker
+docker-compose
 ufw
 aws-cli-v2
 htop
@@ -25,6 +26,7 @@ AUR=(
 opencode-bin
 aws-session-manager-plugin
 amazon-ecr-credential-helper
+lazydocker
 )
 SERVICE=(
 bluetooth
