@@ -116,8 +116,10 @@ bindkey "^[[B" down-line-or-beginning-search
 . /usr/share/nvm/init-nvm.sh
 
 if [[ -z "$TMUX" ]]; then
+  mkdir -p ~/dev && cd ~/dev
   tmux attach-session || tmux new-session
 fi
 
-mkdir -p ~/dev && cd ~/dev
+
+
 
