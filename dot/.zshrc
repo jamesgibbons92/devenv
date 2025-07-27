@@ -120,6 +120,6 @@ if [[ -z "$TMUX" ]]; then
   tmux attach-session || tmux new-session
 fi
 
-
+export PATH="$HOME/.local/share/nvim/mason/bin/:$PATH"
 
 
