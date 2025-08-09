@@ -26,12 +26,34 @@ echo "127.0.1.1 $NEW_HOSTNAME" | sudo tee -a /etc/hosts
 echo "Hostname set successfully!"
 echo
 
+# Prompt for environment type
+echo "Select environment type:"
+echo "1) Home"
+echo "2) Work"
+read -p "Enter choice (1 or 2): " ENV_CHOICE
+
+case $ENV_CHOICE in
+    1)
+        ENV_TYPE="home"
+        echo "Selected: Home environment"
+        ;;
+    2)
+        ENV_TYPE="work"
+        echo "Selected: Work environment"
+        ;;
+    *)
+        echo "Invalid choice. Defaulting to home environment."
+        ENV_TYPE="home"
+        ;;
+esac
+echo
+
 # Execute setup scripts in correct order
 echo "=== Starting setup process ==="
 echo
 
 echo "1. Installing packages..."
-bash "$SCRIPT_DIR/install.sh"
+bash "$SCRIPT_DIR/install.sh" "$ENV_TYPE"
 echo
 
 echo "2. Setting up dotfiles..."

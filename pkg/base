@@ -10,7 +10,6 @@ git
 lazygit
 go
 nvm
-qmk
 zsh
 docker-buildx
 docker
@@ -18,9 +17,6 @@ docker-compose
 ufw
 aws-cli-v2
 htop
-syncthing
-flatpak
-obsidian
 )
 AUR=(
 opencode-bin
@@ -28,8 +24,4 @@ aws-session-manager-plugin
 amazon-ecr-credential-helper
 lazydocker
 )
-SERVICE=(
-bluetooth
-tailscaled
-docker.socket
-)
+

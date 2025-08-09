@@ -62,6 +62,7 @@ has_desktop_environment() {
 }
 
 main() {
+  local ENV_TYPE="$1"
   echo "Starting package installation..."
 
   echo "Upgrading OS"
@@ -69,17 +70,32 @@ main() {
 
   check_and_install_paru
 
-  # Base packages
-  for pkg_file in "$(dirname "$0")/../pkg"/*; do
-    if [[ -f "$pkg_file" ]]; then
-      # Skip desktop packages if no desktop environment detected
-      if [[ "$(basename "$pkg_file")" == "desktop" ]] && ! has_desktop_environment; then
-        echo "No desktop environment detected, skipping desktop packages..."
-        continue
-      fi
-      install_packages_from_file "$pkg_file"
+  # Install base packages
+  BASE_PKG="$(dirname "$0")/../pkg/base"
+  if [[ -f "$BASE_PKG" ]]; then
+    install_packages_from_file "$BASE_PKG"
+  fi
+
+  # Install desktop packages if desktop environment detected
+  if has_desktop_environment; then
+    DESKTOP_PKG="$(dirname "$0")/../pkg/desktop"
+    if [[ -f "$DESKTOP_PKG" ]]; then
+      install_packages_from_file "$DESKTOP_PKG"
     fi
-  done
+  else
+    echo "No desktop environment detected, skipping desktop packages..."
+  fi
+
+  # Install environment-specific packages (home or work)
+  if [[ -n "$ENV_TYPE" ]]; then
+    ENV_PKG="$(dirname "$0")/../pkg/$ENV_TYPE"
+    if [[ -f "$ENV_PKG" ]]; then
+      echo "Installing $ENV_TYPE environment packages..."
+      install_packages_from_file "$ENV_PKG"
+    else
+      echo "No $ENV_TYPE environment packages found, skipping..."
+    fi
+  fi
 
   # Install host-specific packages if available
   HOST_PKGS="$(dirname "$0")/../pkg/host/$(hostnamectl hostname)"
