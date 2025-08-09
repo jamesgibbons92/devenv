@@ -34,23 +34,11 @@ echo "1. Installing packages..."
 bash "$SCRIPT_DIR/install.sh"
 echo
 
-echo "2. Setting up Docker..."
-bash "$SCRIPT_DIR/apps/docker.sh"
-echo
-
-echo "3. Configuring systemd power management..."
-bash "$SCRIPT_DIR/systemd.sh"
-echo
-
-echo "4. Setting up terminal (Oh My Zsh)..."
-bash "$SCRIPT_DIR/apps/z.sh"
-echo
-
-echo "5. Setting up dotfiles..."
+echo "2. Setting up dotfiles..."
 bash "$SCRIPT_DIR/dotfile.sh"
 echo
 
-echo "6. Generating SSH credentials..."
+echo "3. Generating SSH credentials..."
 bash "$SCRIPT_DIR/credential.sh"
 echo
 
@@ -59,10 +47,6 @@ echo
 echo "Summary:"
 echo "- Hostname set to: $NEW_HOSTNAME"
 echo "- Packages installed"
-echo "- Docker configured"
-echo "- Power management configured"
-echo "- Terminal setup complete"
-echo "- Dotfiles applied"
 echo "- SSH key generated"
 echo
 echo "Note: You may need to reboot or log out/in for all changes to take effect."
