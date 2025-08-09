@@ -2,6 +2,11 @@
 
 set -e
 
+# Possibly fixes dns fight
+sudo systemctl enable systemd-resolved
+sudo systemctl start systemd-resolved
+sudo ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+
 echo "Setting up Tailscale and UFW firewall..."
 
 # Enable and start Tailscale service
