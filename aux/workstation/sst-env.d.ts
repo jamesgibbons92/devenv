@@ -5,6 +5,10 @@
 
 declare module "sst" {
   export interface Resource {
+    "Vpc": {
+      "bastion": string
+      "type": "sst.aws.Vpc"
+    }
   }
 }
 /// <reference path="sst-env.d.ts" />

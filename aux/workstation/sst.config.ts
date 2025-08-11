@@ -1,7 +1,7 @@
 /// <reference path="./.sst/platform/config.d.ts" />
 const amis = {
-  "eu-west-1": "ami-0bbcd5ac4ff324992",
-  "eu-west-2": "ami-0d4beb9180011210c",
+  "eu-west-1": "ami-0224687480f8cbcba",
+  "eu-west-2": "ami-04ed5679783ced6bf",
 };
 export default $config({
   app(_) {
@@ -16,7 +16,24 @@ export default $config({
       bastion: true,
       nat: "managed",
       az: 1,
+      transform: {
+        bastionSecurityGroup: {
+          ingress: [
+            {
+              fromPort: 0,
+              toPort: 0,
+              cidrBlocks: [
+                $interpolate`${fetch("https://icanhazip.com").then((res) =>
+                  res.text().then((ip) => `${ip.trim()}/32`)
+                )}`,
+              ],
+              protocol: "-1",
+            },
+          ],
+        },
+      },
     });
+
     const sg = new aws.ec2.SecurityGroup("SecurityGroup", {
       vpcId: vpc.id,
       ingress: [
@@ -24,8 +41,8 @@ export default $config({
           protocol: "tcp",
           fromPort: 22,
           toPort: 22,
-          cidrBlocks: [vpc.nodes.vpc.cidrBlock]
-        }
+          cidrBlocks: [vpc.nodes.vpc.cidrBlock],
+        },
       ],
       egress: [
         {
@@ -33,7 +50,8 @@ export default $config({
           fromPort: 0,
           toPort: 0,
           cidrBlocks: ["0.0.0.0/0"],
-        }]
+        },
+      ],
     });
 
     const ami = amis[aws.config.region || ""];
@@ -43,7 +61,7 @@ export default $config({
 
     const privateKey = new tls.PrivateKey("PrivateKey", {
       algorithm: "ED25519",
-    })
+    });
 
     const sshKey = new aws.ec2.KeyPair("SshKey", {
       publicKey: privateKey.publicKeyOpenssh,
@@ -52,6 +70,9 @@ export default $config({
     const server = new aws.ec2.Instance("Server", {
       instanceType: "t3a.2xlarge",
       ami: ami,
+      rootBlockDevice: {
+        volumeSize: 250,
+      },
       vpcSecurityGroupIds: [sg.id],
       subnetId: vpc.privateSubnets[0].apply((subnet) => subnet),
       keyName: sshKey.keyName,
@@ -62,7 +83,7 @@ export default $config({
 
     return {
       ip: server.privateIp,
-      key: privateKey.privateKeyPem
+      key: privateKey.privateKeyOpenssh,
     };
   },
 });
