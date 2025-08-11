@@ -9,6 +9,10 @@ yeet() {
     ps aux -W | grep $1 | awk '{print $2}' | xargs kill
 }
 
+upgrade() {
+  ~/.devenv/setup/update.sh
+} 
+
 # Tailscale
 alias tss="tailscale status"
 tsf() {
