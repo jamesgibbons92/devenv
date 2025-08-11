@@ -177,6 +177,11 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 -- Copy selection to system clipboard
 vim.keymap.set("x", "Y", '"+y', { desc = "Copy selection to system clipboard" })
 
+-- Open Oil in float
+vim.keymap.set("n", "<leader>e", function()
+  require("oil").open_float()
+end, { desc = "Open Oil in float" })
+
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.

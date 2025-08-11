@@ -42,9 +42,8 @@ case $ENV_CHOICE in
         echo "Selected: Work environment"
         ;;
     *)
-        echo "Invalid choice. Defaulting to home environment."
-        ENV_TYPE="home"
-        ;;
+        echo "Invalid choice. Skipping"
+    ;;
 esac
 echo
 
