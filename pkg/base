@@ -1,5 +1,5 @@
 OFFICIAL=(
-nerd-fonts
+ttf-jetbrains-mono-nerd
 man
 neovim
 tailscale

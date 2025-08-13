@@ -133,6 +133,11 @@ return {
       -- See `:help telescope` and `:help telescope.setup()`
       require("telescope").setup({
         pickers = {
+          live_grep = {
+            additional_args = function(_)
+              return { "--hidden" }
+            end,
+          },
           find_files = {
             hidden = true,
           },
