@@ -123,3 +123,12 @@ fi
 export PATH="$HOME/.local/share/nvim/mason/bin/:$PATH"
 
 
+
+# bun completions
+[ -s "/home/james/.bun/_bun" ] && source "/home/james/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+eval "$(starship init zsh)"

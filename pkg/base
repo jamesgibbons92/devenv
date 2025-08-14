@@ -1,5 +1,6 @@
 OFFICIAL=(
 ttf-jetbrains-mono-nerd
+starship
 man
 neovim
 tailscale
