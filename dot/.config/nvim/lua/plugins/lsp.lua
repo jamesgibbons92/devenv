@@ -255,7 +255,8 @@ return {
       -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
-        "stylua", -- Used to format Lua code
+        "stylua",
+        "prettierd",
       })
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
@@ -308,6 +309,12 @@ return {
       end,
       formatters_by_ft = {
         lua = { "stylua" },
+        javascript = { "prettierd" },
+        typescript = { "prettierd" },
+        json = { "prettierd" },
+        yaml = { "prettierd" },
+        markdown = { "prettierd" },
+        html = { "prettierd" },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
@@ -318,6 +325,7 @@ return {
         stylua = {
           args = { "--indent-width", "2", "--indent-type", "Spaces", "-" },
         },
+        prettierd = {},
       },
     },
   },
