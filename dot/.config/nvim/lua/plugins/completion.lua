@@ -88,6 +88,7 @@ return {
         -- By default, you may press `<c-space>` to show the documentation.
         -- Optionally, set `auto_show = true` to show the documentation after a delay.
         documentation = { auto_show = true, auto_show_delay_ms = 200 },
+        ghost_text = { enabled = false },
       },
 
       sources = {
@@ -108,6 +109,9 @@ return {
               end
               return true
             end,
+            opts = {
+              debounce = 100,
+            },
           },
         },
       },
@@ -130,7 +134,7 @@ return {
   {
     "copilotlsp-nvim/copilot-lsp",
     init = function()
-      vim.g.copilot_nes_debounce = 50
+      vim.g.copilot_nes_debounce = 500
 
       local function safely_detach_copilot(bufnr)
         local clients = vim.lsp.get_clients({ name = "copilot_ls", bufnr = bufnr })
