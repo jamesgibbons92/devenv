@@ -55,6 +55,16 @@ echo "1. Installing packages..."
 bash "$SCRIPT_DIR/install.sh" "$ENV_TYPE"
 echo
 
+echo "2. Enabling services..."
+for service_script in "$SCRIPT_DIR/services"/*.sh; do
+    if [[ -f "$service_script" ]]; then
+        echo "Running $(basename "$service_script")..."
+        bash "$service_script"
+    fi
+done
+echo
+
+
 echo "2. Setting up dotfiles..."
 bash "$SCRIPT_DIR/dotfile.sh"
 echo

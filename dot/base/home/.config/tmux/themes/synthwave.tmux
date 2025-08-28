@@ -2,13 +2,13 @@
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-pink="#ff7edb"
-cyan="#36f9f6"
-blue_bright="#2ee2fa"
-yellow="#fede5d"
-green_bright="#72f1b8"
-powder_blue="#a2c7e5"
-raisin="#262335"
+pink="#d3869b"
+cyan="#89b482"
+blue_bright="#7daea3"
+yellow="#d8a657"
+green_bright="#a9b665"
+powder_blue="#fbf1c7"
+raisin="#3c3836"
 
 sep_left=""
 sep_right=""

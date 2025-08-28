@@ -312,6 +312,7 @@ return {
         javascript = { "prettierd" },
         typescript = { "prettierd" },
         json = { "prettierd" },
+        jsonc = { "prettierd" },
         yaml = { "prettierd" },
         markdown = { "prettierd" },
         html = { "prettierd" },

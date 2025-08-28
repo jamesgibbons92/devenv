@@ -9,9 +9,48 @@ yeet() {
     ps aux -W | grep $1 | awk '{print $2}' | xargs kill
 }
 
+# Package management
 upgrade() {
   ~/.devenv/setup/update.sh
 } 
+pacman-why() {
+    if [ -z "$1" ]; then
+        echo "Usage: pacman-why <package-name>"
+        return 1
+    fi
+    
+    local pkg="$1"
+    
+    # Check if package is installed
+    if ! pacman -Qi "$pkg" &>/dev/null; then
+        echo "Package '$pkg' is not installed."
+        return 1
+    fi
+    
+    echo "=== Why is '$pkg' installed? ==="
+    
+    # Show install reason
+    echo -n "Install Reason: "
+    pacman -Qi "$pkg" | grep "Install Reason" | sed 's/Install Reason[ ]*: //'
+    
+    # Show what depends on it
+    echo -n "Required By: "
+    local required_by=$(pacman -Qi "$pkg" | grep "Required By" | sed 's/Required By[ ]*: //')
+    if [ "$required_by" = "None" ]; then
+        echo "None (orphaned - can be removed safely)"
+    else
+        echo "$required_by"
+        
+        # If it has dependencies, show the tree
+        echo ""
+        echo "=== Dependency tree ==="
+        if command -v pactree &>/dev/null; then
+            pactree -r -d 2 "$pkg" 2>/dev/null || echo "Install 'pacman-contrib' for dependency tree visualization"
+        else
+            echo "Install 'pacman-contrib' package to see dependency trees"
+        fi
+    fi
+}
 
 # Tailscale
 alias tss="tailscale status"

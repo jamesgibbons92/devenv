@@ -1,25 +1,15 @@
 return {
   {
-    "jamesgibbons92/synthwave.nvim",
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    "sainnhe/gruvbox-material",
+    lazy = false,
     priority = 1000,
     config = function()
-      local synthweave = require("synthweave")
-      synthweave.setup({
-        transparent = true,
-        palette = {
-          -- override palette colors, take a peek at synthweave/palette.lua
-          red = "#fa5a4b",
-          yellow = "#fede5d",
-          carrot = "#f88414",
-        },
-        overrides = {
-          Boolean = { fg = "#f97e72" },
-          Number = { fg = "#f97e72" },
-          -- ["@punctuation.bracket"] = { fg = "#ddd7e0" },
-        },
-      })
-      synthweave.load()
+      -- Optionally configure and load the colorscheme
+      -- directly inside the plugin declaration.
+      vim.g.gruvbox_material_enable_italic = true
+      vim.g.gruvbox_material_background = "hard"
+      vim.g.gruvbox_material_diagnostic_virtual_text = "highlighted"
+      vim.cmd.colorscheme("gruvbox-material")
     end,
   },
   -- Highlight todo, notes, etc in comments
