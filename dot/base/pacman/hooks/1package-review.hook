@@ -1,9 +1,9 @@
-; [Trigger]
-; Operation = Install
-; Type = Package
-; Target = *
-;
-; [Action]
-; Description = Log installed packages for review
-; When = PostTransaction
-; Exec = /bin/bash -c 'mkdir -p ~/.devenv/pkg && echo "$PACMAN_PACKAGES" | tr " " "\n" >> ~/.devenv/pkg/review'
+ [Trigger]
+ Operation = Install
+ Type = Package
+ Target = *
+
+ [Action]
+ Description = Log installed packages for review
+ When = PostTransaction
+ Exec = /bin/bash -c 'mkdir -p ~/.devenv/pkg && echo "$PACMAN_PACKAGES" | tr " " "\n" >> ~/.devenv/pkg/review'

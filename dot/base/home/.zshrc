@@ -3,7 +3,7 @@
 # ================================
 
 # Auto-start Hyprland on TTY1
-if [[ -z "$DISPLAY" && -z "$WAYLAND_DISPLAY" && "$XDG_VTNR" -eq 1 ]]; then
+if [[ -z "$DISPLAY" && -z "$WAYLAND_DISPLAY" && "$XDG_VTNR" -eq 1 ]] && command -v Hyprland >/dev/null 2>&1; then
   exec Hyprland
 fi
 

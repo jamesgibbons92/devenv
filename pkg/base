@@ -7,6 +7,9 @@ tailscale
 wl-clipboard
 stow
 tmux
+jq
+curl
+wget
 git
 lazygit
 go
@@ -17,7 +20,7 @@ docker
 docker-compose
 ufw
 aws-cli-v2
-htop
+btop
 )
 AUR=(
 opencode-bin
