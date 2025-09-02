@@ -44,12 +44,12 @@ source $ZSH/oh-my-zsh.sh
 # Node Version Manager
 . /usr/share/nvm/init-nvm.sh
 
-# Development environment files
+# Environment files
 for f in ~/.devenv/env/*; do source $f; done
 
 
 # Bun completions
-[ -s "/home/james/.bun/_bun" ] && source "/home/james/.bun/_bun"
+[ -s "~/.bun/_bun" ] && source "~/.bun/_bun"
 
 # ================================
 # Key Bindings & ZLE
@@ -67,7 +67,7 @@ bindkey "^[[B" down-line-or-beginning-search
 # ================================
 
 # Auto-start tmux (if not in Hyprland session)
-if [[ -z "$TMUX" ]]; then
+if [[ -z "$TMUX" && ! $(tmux list-clients 2>/dev/null) ]]; then
   mkdir -p ~/dev && cd ~/dev
   tmux attach-session || tmux new-session
 fi

@@ -10,6 +10,7 @@ tmux
 jq
 curl
 wget
+unzip
 git
 lazygit
 go
