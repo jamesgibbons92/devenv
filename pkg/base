@@ -27,5 +27,6 @@ opencode-bin
 aws-session-manager-plugin
 amazon-ecr-credential-helper
 lazydocker
+downgrade
 )
 
